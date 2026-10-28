@@ -1,0 +1,284 @@
+.viewport {
+  width: 1536px;
+  height: 695px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-wrap {
+  width: 1700px;
+  height: 1700px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bg1,
+.bg2 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.bg2 {
+  opacity: 0;
+}
+
+.man1,
+.man1-sense {
+  width: 350px;
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.man1-sense {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease-in-out;
+}
+
+/* 마우스 호버 시 스파이더센스 감지 */
+
+.man1-sense {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.17s ease-in-out;
+}
+
+.man1-sense.show {
+  opacity: 1;
+}
+
+/* man1 클릭 시 스파이더센스 종료 */
+
+.man1-sense.disappear {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 두번째자세스파이더맨 */
+
+.man2 {
+  width: 160px;
+  position: absolute;
+  top: 51%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.6s ease-in 1.6s;
+}
+
+.man2.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.chat1 {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: 43%;
+  left: 37%;
+  transform: translate(-50%, -50%);
+
+  animation-name: fadeIn;
+  animation-delay: 0.4s;
+  animation-duration: 1.3s;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in;
+}
+
+.chat2 {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: 56%;
+  left: 64%;
+  transform: translate(-50%, -50%);
+
+  animation-name: fadeIn;
+  animation-delay: 1.4s;
+  animation-duration: 1.3s;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* man1 클릭 시 배경 회전 */
+.bg-wrap.play {
+  animation: rotate 2.7s cubic-bezier(0.9, 0, 0.3, 1) 0.3s forwards;
+}
+
+/* man1 클릭 시 배경2 페이드인 */
+.bg-wrap.play .bg2 {
+  animation: fadeIn 2.7s cubic-bezier(0.9, 0, 0.3, 1) 0.3s forwards;
+}
+
+.chat-wrap.disappear {
+  opacity: 0;
+}
+
+.man1.disappear {
+  opacity: 0;
+}
+
+.logo {
+  width: 220px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* man1 클릭 시 logo 나타나고 사라짐 */
+.logo.show {
+  animation:
+    stamp 0.2s ease-in forwards,
+    fadeOut 0.9s ease-out 1.7s forwards;
+}
+
+.final-frame {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* man1 클릭 시 프레임 나타남 */
+.final-frame.show {
+  animation: fadeIn 1.4s ease-in-out 2s forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes stamp {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  80% {
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.glitch-wrap {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.glitch-wrap img {
+  width: 160px;
+  position: absolute;
+  top: 51%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+
+/* 글리치 이미지 당 애니메이션 값 할당 */
+.glitch-wrap.active .man2-1 {
+  animation: flash1 0.6s steps(1) infinite;
+}
+.glitch-wrap.active .man2-h {
+  animation: flash2 0.6s steps(1) infinite;
+}
+.glitch-wrap.active .man2-2 {
+  animation: flash3 0.6s steps(1) infinite;
+}
+.glitch-wrap.active .man2-i {
+  animation: flash4 0.6s steps(1) infinite;
+}
+
+@keyframes flash1 {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+}
+@keyframes flash2 {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 0;
+  }
+}
+@keyframes flash3 {
+  0% {
+    opacity: 0;
+  }
+  55% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0;
+  }
+}
+@keyframes flash4 {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0;
+  }
+}
